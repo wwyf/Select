@@ -25,8 +25,7 @@
         {
             "name": "Win32",
             "includePath": [
-                "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include/*",
-                "D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include"
+                "C:/Program Files/mingw-w64/x86_64-6.3.0-posix-seh-rt_v5-rev2/mingw64/lib/gcc/x86_64-w64-mingw32/6.3.0"
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
