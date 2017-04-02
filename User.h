@@ -1,5 +1,5 @@
 #include <string>
-#include <vector>
+#include <vector>#include <iostream>
 #include "Lesson.h"
 using std::string;
 using std::vector;
@@ -53,10 +53,16 @@ public:
 
 class Admin : public User {
     // can add teachers and students
+public:
+    Admin(const string& name, const string& password):
+        User(name, password){};
 
+    virtual void my_identity() const;
 };
 
 class Guest : public User {
     // only can see the whole lesson list
 
 };
+
+
