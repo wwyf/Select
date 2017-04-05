@@ -4,6 +4,9 @@
 #include <fstream>
 #include <string>
 
+
+
+
 bool Database::upload(const string & userfile_name,  const string& lessonfile_name){
     std::fstream user_file(userfile_name.c_str());
     std::fstream lesson_file(lessonfile_name.c_str());
@@ -46,7 +49,7 @@ bool Database::upload(const string & userfile_name,  const string& lessonfile_na
         }
         lesson_file.clear();
     }
-                        
+
 }
 
 void Database::print() const

@@ -14,9 +14,9 @@ struct Lesson{
     int max_number;
     Lesson():
         m_major("none"),m_name("none"),m_number(0){};
-    Lesson(const string& major, 
-            const string& name, 
-                int cur_num_stud = 0, 
+    Lesson(const string& major,
+            const string& name,
+                int cur_num_stud = 0,
                     int max_num_stud = 0):
         m_major(major),
             m_name(name),
@@ -43,11 +43,12 @@ struct Lesson{
 
 
 class Database{
-    // the same name of two lesson is not allowed 
+    // the same name of two lesson is not allowed
     map<string, map<string, Lesson> > lesson_data;
 public:
     bool upload(const string& userfile_name = "user",
                 const string& lessonfile_name = "lesson");
+
     // bool add_major(const string& new_major);
     // bool add_lesson(const string& new_lesson);
     // bool find_major(const string& major_name) const;
