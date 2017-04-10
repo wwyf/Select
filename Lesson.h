@@ -1,27 +1,43 @@
 #include <map>
-
+#include <vector>
 #include <iostream>
+#include <sstream>
+using std::stringstream;
 using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
 using std::map;
+using std::vector;
+
+
+/*
+1. 存储课程名字
+    课程人数
+    课程最大人数
+    课程名单
+实现功能：
+1. 
+*/
 
 struct Lesson{
-    string m_major;
     string m_name;
     int m_number;
     int max_number;
-    Lesson():
-        m_major("none"),m_name("none"),m_number(0){};
-    Lesson(const string& major,
-            const string& name,
+    vector<string> stud_selected;
+    
+
+    Lesson(const string& name,
                 int cur_num_stud = 0,
-                    int max_num_stud = 0):
-        m_major(major),
+                    int max_num_stud = 0): 
             m_name(name),
                 m_number(cur_num_stud),
                     max_number(max_num_stud){};
+    Lesson():
+        Lesson("none", 0, 0) {};
+    
+    Lesson(const string & data);
+
     inline bool add_student(){
         if (!is_full()){
             m_number++;
@@ -30,6 +46,7 @@ struct Lesson{
         else
             return false;
     }
+    
     inline bool is_empty() const{
         return !m_number;
     }
@@ -37,23 +54,8 @@ struct Lesson{
         return (m_number == max_number);
     }
     inline void print() const{
-        cout << m_major << " " << m_name << " " << m_number << endl;
+        cout << this->to_string() << endl;
     }
+    const string to_string() const;
 };
 
-
-class Database{
-    // the same name of two lesson is not allowed
-    map<string, map<string, Lesson> > lesson_data;
-public:
-    bool upload(const string& userfile_name = "user",
-                const string& lessonfile_name = "lesson");
-
-    // bool add_major(const string& new_major);
-    // bool add_lesson(const string& new_lesson);
-    // bool find_major(const string& major_name) const;
-    // bool find_major_lesson(const string& major_name,
-    //                        const string& lesson_name) const;
-    // bool find_lesson(const string& lesson_name) const;
-    //void add_lesson_a_people();
-};

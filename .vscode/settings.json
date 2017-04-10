@@ -5,6 +5,7 @@
         "vector": "cpp",
         "string": "cpp",
         "array": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "iomanip": "cpp"
     }
 }

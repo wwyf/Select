@@ -1,68 +1,60 @@
 #include <string>
-#include <vector>#include <iostream>
+#include <vector>
+#include <iostream>
 #include "Lesson.h"
 using std::string;
 using std::vector;
 
 
 
+
+/*
+1. 用户登录，验证
+2. 用户交互菜单
+3. 封装用户对数据库的操作
+*/ 
 class User{
+protected:
     string m_name; 
     string m_password;
 public:
-    User();
-    User(string name, string passward)
+    User(const string& name,const string& passward)
         :m_name(name),m_password(passward) {} ;
-    virtual void my_identity() = 0;
+    User():User("none", "node"){};
+    const string get_name() const {return m_name;};
+
+    bool verify(const string & name, const string & password) const;
+    virtual void menu() = 0 ;
+    virtual const string to_string() = 0;
+    void print_lesson() const;
 };
 
 
-class Student : public User{
-    // can only read lesson and can not modify 
-    string m_major;
-    vector<Lesson> m_lesson;
+
+class Student:public User{
+    vector<string> selected_lesson;
 public:
-    Student(const string& major, 
-            const string& name, 
-            const string& password):
-        m_major(major), User(name, password) {};
-    void menu();
-
-    void select();
-
-    void deselect();
-
-    void my_lesson() const;
-
-    virtual void my_identity() const;
-
+    Student(const string& name,const string& password):
+        User(name, password){};
+    explicit Student(const string& data);
+    void menu(){};
+    const string to_string() const;
+    bool select_lesson();
+    bool return_lesson();
 };
 
-class Teacher : public User{
-    // can read modify and add students
+
+
+class Teacher:public User{
+
 public:
     Teacher(const string& name, const string& password):
         User(name, password){};
-    void menu();
+    Teacher(const string& data);
+    virtual void menu() {};
+    virtual const string to_string() const ;
+    bool add_lesson();
+    bool delete_lesson();
 
-    void add_lesson();
-
-    
-
+    void print_lesson_student();
 };
-
-class Admin : public User {
-    // can add teachers and students
-public:
-    Admin(const string& name, const string& password):
-        User(name, password){};
-
-    virtual void my_identity() const;
-};
-
-class Guest : public User {
-    // only can see the whole lesson list
-
-};
-
-
