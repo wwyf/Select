@@ -22,12 +22,12 @@ protected:
 public:
     User(const string& name,const string& passward)
         :m_name(name),m_password(passward) {} ;
-    User():User("none", "node"){};
+    User():User("none", "none"){};
     const string get_name() const {return m_name;};
-
-    // bool verify(const string & name, const string & password) const;
-    // virtual void menu() = 0 ;
+    bool verify(const string & try_password) const;
     virtual const string to_string(){ return "";};
+    
+    // virtual void menu() = 0 ;
     // void print_lesson() const;
 };
 
@@ -36,13 +36,14 @@ public:
 class Student:public User{
     vector<string> selected_lesson;
 public:
+    Student(){};
     Student(const string& name,const string& password):
         User(name, password){};
     explicit Student(const string& data);
     // void menu(){};
     const string to_string() const;
-    // bool select_lesson();
-    // bool return_lesson();
+    bool select_lesson(const string & lesson_name);
+    bool return_lesson(const string & lesson_name);
 };
 
 
@@ -50,11 +51,12 @@ public:
 class Teacher:public User{
 
 public:
+    Teacher(){};
     Teacher(const string& name, const string& password):
         User(name, password){};
     explicit Teacher(const string& data);
-    // void menu() {};
     const string to_string() const ;
+    // void menu() {};
     // bool add_lesson();
     // bool delete_lesson();
 

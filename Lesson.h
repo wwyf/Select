@@ -25,19 +25,19 @@ using std::vector;
 
 struct Lesson{
     string m_name;
-    int m_number;
     int max_number;
+    int m_number;
     vector<string> stud_selected;
     
 
     Lesson(const string& name,
-                int cur_num_stud,
-                    int max_num_stud):// ambiguous conversion 
+                    int max_num_stud,
+                        int cur_num = 0):// ambiguous conversion 
             m_name(name),
-                m_number(cur_num_stud),
-                    max_number(max_num_stud){};
+                    max_number(max_num_stud),
+                        m_number(cur_num){};
     Lesson():
-        Lesson("none", 0, 0) {};
+        Lesson("none", 0) {};
     
     Lesson(const string & data);
 
@@ -58,6 +58,7 @@ struct Lesson{
         cout << this->to_string() << endl;
     }
     const string to_string() const;
+    const string to_string_public() const;
 };
 
 #endif

@@ -1,6 +1,7 @@
-       C++   4  40      baba    blabla      name     nulll
-      java   7  53
-     linux   5  45
-      math   5  50     name1     name2     name3     name4     name5
-     mysql   6  29
-    python   2 230
+       C++   2  40     name1     name2
+      java   0  53
+     linux   0  45
+      math   0  50
+     mysql   1  29     name1
+      perl   1  44     name2
+    python   0 230

@@ -142,28 +142,81 @@ bool Database::add_teacher(const string & teach_name,
 }
 
  bool Database::add_lesson(const string& lesson_name,
-                 const int num, const int max_num)
+                      const int max_num)
  {
-    lesson_data.insert({lesson_name, Lesson(lesson_name, num, max_num)});
+    lesson_data.insert({lesson_name, Lesson(lesson_name, max_num)});
     return true;
  }
 
     // select or diselect a lesson 
+    // the stud_name should be verified
 bool Database::lesson_add_stud(const string& lesson_name,
                             const string & stud_name)
 {
     if (find_lesson(lesson_name)){
-        if(lesson_data[lesson_name].add_student(stud_name))
-            return true; 
+        if(lesson_data[lesson_name].add_student(stud_name)){
+            student_data[stud_name].select_lesson(lesson_name);
+            return true;
+        }
     }
     return false;
 }
+
 bool Database::lesson_delete_stud(const string& lesson_name,
                                 const string & stud_name)
 {
     if (find_lesson(lesson_name))
-        if(lesson_data[lesson_name].add_student(stud_name))
+        if(lesson_data[lesson_name].delete_student(stud_name)){
+            student_data[stud_name].return_lesson(lesson_name);
             return true; 
+        }
     return false;
 }
 
+
+void Database::print_student() const
+{
+    for (auto i : student_data){
+        cout << i.second.to_string() << endl;
+    }
+}
+
+void Database::print_teacher() const
+{
+    for (auto i : teacher_data){
+        cout << i.second.to_string() << endl;
+    }
+}
+void Database::print_lesson() const
+{
+    for (auto i : lesson_data){
+        cout << i.second.to_string() << endl;
+    } 
+}
+ 
+void Database::print_lesson_public(const string & lesson_name) const
+{
+    cout << lesson_data.find(lesson_name)->second.to_string_public() << endl;
+}
+
+void Database::print_lesson_public() const
+{
+    for (auto i : lesson_data)
+    {
+        cout << i.second.to_string_public() << endl;
+    }
+}  
+
+bool Database::verify(const string & user_name, const string & try_password) const
+{
+    int flag = find_username(user_name);
+    if (flag == 0)
+        return false;
+    if (flag == 1)
+        if (student_data.find(user_name)->second.verify(try_password))
+            return true;
+    if (flag == 2)
+        if (teacher_data.find(user_name)->second.verify(try_password))
+            return true;
+    return false;
+} 

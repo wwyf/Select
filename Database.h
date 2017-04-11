@@ -51,7 +51,6 @@ public:
     bool add_teacher(const string & teach_name,
                         const string & teach_password);
     bool add_lesson(const string & lesson_name,
-                        const int  num,
                             const int max_num);
     // select or diselect a lesson 
     bool lesson_add_stud(const string& lesson_name,
@@ -59,6 +58,12 @@ public:
     bool lesson_delete_stud(const string& lesson_name,
                                 const string & stud_name);
     
+    void print_student() const;
+    void print_teacher() const;
+    void print_lesson() const;
+    void print_lesson_public(const string & lesson_name) const;
+    void print_lesson_public() const;
+    bool verify(const string & user_name, const string & try_password) const;
 
     
 };
