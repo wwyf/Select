@@ -1,12 +1,14 @@
+#ifndef _USER_H_
+#define _USER_H_
+
 #include <string>
 #include <vector>
 #include <iostream>
-#include "Lesson.h"
 using std::string;
 using std::vector;
 
-
-
+ 
+ 
 
 /*
 1. 用户登录，验证
@@ -23,10 +25,10 @@ public:
     User():User("none", "node"){};
     const string get_name() const {return m_name;};
 
-    bool verify(const string & name, const string & password) const;
-    virtual void menu() = 0 ;
-    virtual const string to_string() = 0;
-    void print_lesson() const;
+    // bool verify(const string & name, const string & password) const;
+    // virtual void menu() = 0 ;
+    virtual const string to_string(){ return "";};
+    // void print_lesson() const;
 };
 
 
@@ -37,10 +39,10 @@ public:
     Student(const string& name,const string& password):
         User(name, password){};
     explicit Student(const string& data);
-    void menu(){};
+    // void menu(){};
     const string to_string() const;
-    bool select_lesson();
-    bool return_lesson();
+    // bool select_lesson();
+    // bool return_lesson();
 };
 
 
@@ -50,11 +52,14 @@ class Teacher:public User{
 public:
     Teacher(const string& name, const string& password):
         User(name, password){};
-    Teacher(const string& data);
-    virtual void menu() {};
-    virtual const string to_string() const ;
-    bool add_lesson();
-    bool delete_lesson();
+    explicit Teacher(const string& data);
+    // void menu() {};
+    const string to_string() const ;
+    // bool add_lesson();
+    // bool delete_lesson();
 
-    void print_lesson_student();
+    // void print_lesson_student();
 };
+
+
+#endif

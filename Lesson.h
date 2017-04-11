@@ -1,3 +1,6 @@
+#ifndef _LESSON_H_
+#define _LESSON_H_
+
 #include <map>
 #include <vector>
 #include <iostream>
@@ -28,8 +31,8 @@ struct Lesson{
     
 
     Lesson(const string& name,
-                int cur_num_stud = 0,
-                    int max_num_stud = 0): 
+                int cur_num_stud,
+                    int max_num_stud):// ambiguous conversion 
             m_name(name),
                 m_number(cur_num_stud),
                     max_number(max_num_stud){};
@@ -38,15 +41,13 @@ struct Lesson{
     
     Lesson(const string & data);
 
-    inline bool add_student(){
-        if (!is_full()){
-            m_number++;
-            return true;
-        }
-        else
-            return false;
+    bool add_student(const string & stud_name);
+
+    bool delete_student(const string & stud_name);
+
+    inline const string get_name() const{
+        return m_name;
     }
-    
     inline bool is_empty() const{
         return !m_number;
     }
@@ -59,3 +60,4 @@ struct Lesson{
     const string to_string() const;
 };
 
+#endif

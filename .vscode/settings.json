@@ -6,6 +6,7 @@
         "string": "cpp",
         "array": "cpp",
         "iosfwd": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "ostream": "cpp"
     }
 }

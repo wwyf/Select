@@ -1,3 +1,6 @@
+#ifndef _DATABASE_H_
+#define _DATABASE_H_
+
 #include <string>
 #include <map>
 #include <iostream>
@@ -25,12 +28,12 @@ class Database{
     map<string, Lesson> lesson_data;
 
 public:
-    bool load(const string& studfile_name = "student",
-               const string& teachfile_name = "teacher",
-                const string& lessonfile_name = "lesson");
-    bool save(const string& studfile_name = "student",
-               const string& teachfile_name = "teacher",
-                const string& lessonfile_name = "lesson");
+    bool load(const string& studfile_name = "./data/student",
+               const string& teachfile_name = "./data/teacher",
+                const string& lessonfile_name = "./data/lesson");
+    bool save(const string& studfile_name = "./data/student",
+               const string& teachfile_name = "./data/teacher",
+                const string& lessonfile_name = "./data/lesson");
     
     // void print() const;
  
@@ -47,7 +50,9 @@ public:
                        const string & stud_password);
     bool add_teacher(const string & teach_name,
                         const string & teach_password);
-    
+    bool add_lesson(const string & lesson_name,
+                        const int  num,
+                            const int max_num);
     // select or diselect a lesson 
     bool lesson_add_stud(const string& lesson_name,
                             const string & stud_name);
@@ -57,3 +62,6 @@ public:
 
     
 };
+
+
+#endif

@@ -8,14 +8,14 @@ const int LENGTH_NAME = 10;
 const int LENGTH_PASS = 20;
 
 
-//  
-bool User::verify(const string & name, const string & password) const 
-{
+// //  
+// bool User::verify(const string & name, const string & password) const 
+// {
      
-}
+// }
 
-
-void User::print_lesson() const;
+ 
+// void User::print_lesson() const;
 
 
 
@@ -30,27 +30,23 @@ Student::Student(const string& data){
         this->selected_lesson.push_back(lesson);
     } 
 }
-
  
-void Student::menu()
-{
+ 
 
-
-}
 
 const string Student::to_string() const 
 {
-    std::stringstream data;
-    string res;
+    std::stringstream stream;
+    string data;
 
-    data << setw(LENGTH_NAME) << m_name 
-         << setw(LENGTH_PASS) << m_password;
+    stream << setw(LENGTH_NAME) << this->m_name 
+         << setw(LENGTH_PASS) << this->m_password;
     for (auto i : selected_lesson){
-        data << setw(LENGTH_NAME) << i;
+        stream << setw(LENGTH_NAME) << i;
     }
 
-    data >> res;
-    return res;
+    getline(stream, data);
+    return data;
 }
 
 
@@ -66,12 +62,12 @@ Teacher::Teacher(const string & data)
 
 const string Teacher::to_string() const 
 { 
-    std::stringstream data;
-    string res;
+    std::stringstream stream;
+    string data;
  
-    data << setw(LENGTH_NAME) << m_name 
+    stream << setw(LENGTH_NAME) << m_name 
          << setw(LENGTH_PASS) << m_password;
 
-    data >> res;
-    return res;
+    getline(stream, data);
+    return data;
 }

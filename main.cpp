@@ -3,10 +3,9 @@
 int main(){
     Database d;
     d.load();
-    d.print();
-    d.save("user2", "lesson2");
+    // d.print();
+    d.save("./data/student2","./data/teacher2", "./data/lesson2");
     return 0;
-    
-    
+     
     
 }
