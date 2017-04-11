@@ -42,6 +42,7 @@ public:
     explicit Student(const string& data);
     // void menu(){};
     const string to_string() const;
+    const string to_string_public() const;
     bool select_lesson(const string & lesson_name);
     bool return_lesson(const string & lesson_name);
 };

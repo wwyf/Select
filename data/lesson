@@ -1,6 +1,8 @@
-       C++   40      
-      java   53      
-     linux   45
-      math   50     
-     mysql   29
-    python   230
+       C++  40   3     name1     name2  16337237
+      java  34   1     name1
+     linux  45   0
+      math  33   1  16337237
+     mysql  23   1     name1
+      perl  66   1     name2
+    python 200   0
+   sublime  60   1     name1

@@ -45,6 +45,20 @@ const string Student::to_string() const
     getline(stream, data);
     return data;
 }
+ 
+const string Student::to_string_public() const 
+{
+    std::stringstream stream;
+    string data;
+
+    stream << setw(LENGTH_NAME) << this->m_name; 
+    for (auto i : selected_lesson){
+        stream << setw(LENGTH_NAME) << i;
+    }
+
+    getline(stream, data);
+    return data;
+}
 
 bool Student::select_lesson(const string & lesson_name){
     auto finder = std::find(selected_lesson.begin(), selected_lesson.end(), lesson_name);

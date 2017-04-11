@@ -106,6 +106,10 @@ bool Database::find_lesson(const string & lesson_name) const
         return true;
 }
 
+/*
+if the username has been existed, return 1 (student) or 2 (reacher)
+if the username don't existed, return 0 ;
+*/
 int Database::find_username(const string & user_name) const
 {
     auto t1 = student_data.find(user_name);
@@ -158,6 +162,14 @@ bool Database::lesson_add_stud(const string& lesson_name,
             student_data[stud_name].select_lesson(lesson_name);
             return true;
         }
+        else
+        {
+            cout << "You has selected this course." << endl;
+        }
+    }
+    else
+    {
+        cout << "This lesson is not existed." << endl;
     }
     return false;
 }
@@ -165,11 +177,21 @@ bool Database::lesson_add_stud(const string& lesson_name,
 bool Database::lesson_delete_stud(const string& lesson_name,
                                 const string & stud_name)
 {
-    if (find_lesson(lesson_name))
-        if(lesson_data[lesson_name].delete_student(stud_name)){
+    if (find_lesson(lesson_name)){
+        if(lesson_data[lesson_name].delete_student(stud_name))
+        {
             student_data[stud_name].return_lesson(lesson_name);
             return true; 
         }
+        else
+        {
+            cout << "You has not selected this course." << endl;
+        }
+    }
+    else
+    {
+        cout << "This lesson is not existed." << endl;
+    }
     return false;
 }
 
@@ -181,6 +203,11 @@ void Database::print_student() const
     }
 }
 
+void Database::print_student_public(const string & user_name) const
+{
+    cout << student_data.find(user_name)->second.to_string_public() << endl;    
+}
+ 
 void Database::print_teacher() const
 {
     for (auto i : teacher_data){
@@ -194,6 +221,12 @@ void Database::print_lesson() const
     } 
 }
  
+
+void Database::print_lesson(const string & lesson_name) const
+{
+    cout << lesson_data.find(lesson_name)->second.to_string() << endl;
+}
+
 void Database::print_lesson_public(const string & lesson_name) const
 {
     cout << lesson_data.find(lesson_name)->second.to_string_public() << endl;
@@ -206,17 +239,16 @@ void Database::print_lesson_public() const
         cout << i.second.to_string_public() << endl;
     }
 }  
-
-bool Database::verify(const string & user_name, const string & try_password) const
+int Database::verify(const string & user_name, const string & try_password) const
 {
     int flag = find_username(user_name);
     if (flag == 0)
-        return false;
+        return 0; 
     if (flag == 1)
         if (student_data.find(user_name)->second.verify(try_password))
-            return true;
+            return 1;
     if (flag == 2)
         if (teacher_data.find(user_name)->second.verify(try_password))
-            return true;
-    return false;
+            return 2;
+    return 0;
 } 

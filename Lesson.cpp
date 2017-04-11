@@ -12,13 +12,12 @@ using std::setw;
 Lesson::Lesson(const string & data){
         stringstream res ;
         res << data;
-        res >> m_name >> max_number ;
-        m_number = 0;
+        res >> m_name >> max_number >> m_number ;
+
 
         string  stud_name;
         while (res >> stud_name){
             stud_selected.push_back(stud_name);
-            m_number++;
         }
         res.clear();
     }
@@ -30,8 +29,8 @@ const string  Lesson::to_string() const
     std::stringstream stream; 
     std::string data;
     stream << setw(10) << this->m_name
-           << setw(4)  << this->m_number
-           << setw(4)  << this->max_number;
+           << setw(4)  << this->max_number
+           << setw(4)  << this->m_number;
     for (auto i : stud_selected){
         stream << setw(10) << i;
     }
@@ -45,8 +44,8 @@ const string Lesson::to_string_public() const
     std::stringstream stream; 
     std::string data;
     stream << setw(10) << this->m_name
-           << setw(4)  << this->m_number
-           << setw(4)  << this->max_number;
+           << setw(4)  << this->max_number
+           << setw(4)  << this->m_number;
     getline(stream, data);
     return data;
 }
