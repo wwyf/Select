@@ -14,15 +14,14 @@ using std::map;
 using std::vector;
 
 
+
+
 /*
-1. 存储课程名字
+ 存储课程名字
     课程人数
     课程最大人数
     课程名单
-实现功能：
-1. 
 */
-
 class Lesson{
 
     static string lesson_head_string();
