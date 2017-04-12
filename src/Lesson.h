@@ -24,7 +24,7 @@ using std::vector;
 */
 class Lesson{
 
-    static string lesson_head_string();
+
 
     string m_name;
     int max_number;
@@ -61,6 +61,7 @@ public:
     }
     const string to_string() const;
     const string to_string_public() const;
+    static string lesson_head_string();
 };
 
 #endif
