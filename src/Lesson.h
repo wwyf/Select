@@ -23,7 +23,7 @@ using std::vector;
 1. 
 */
 
-struct Lesson{
+class Lesson{
 
     static string lesson_head_string();
 
@@ -31,7 +31,7 @@ struct Lesson{
     int max_number;
     int m_number;
     vector<string> stud_selected;
-    
+public:
 
     Lesson(const string& name,
                     int max_num_stud,
