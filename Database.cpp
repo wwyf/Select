@@ -164,7 +164,7 @@ bool Database::lesson_add_stud(const string& lesson_name,
         }
         else
         {
-            cout << "You has selected this course." << endl;
+            cout << "You has selected this course or the lesson is full." << endl;
         }
     }
     else

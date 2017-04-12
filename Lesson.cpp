@@ -69,7 +69,7 @@ bool Lesson::add_student(const string & stud_name)
     auto finder = find(stud_selected.begin(),
                         stud_selected.end(),
                         stud_name);
-    if (finder != stud_selected.end())
+    if (finder != stud_selected.end() || this->is_full())
         return false;
     else{
         stud_selected.push_back(stud_name);

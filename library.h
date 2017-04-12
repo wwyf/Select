@@ -1,4 +1,3 @@
-// library.cpp
 
 #include <iostream>
 #include <string>
@@ -8,7 +7,7 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-static Database data;
+static Database data; 
 
 void create_acount()
 {
@@ -89,6 +88,8 @@ void student_menu(const string &user_name)
                 cin >> lesson_name;
                 if (data.lesson_add_stud(lesson_name, user_name))
                     cout << "Select this lesson successfully" << endl;
+                else
+                    cout << "Failed to select the lesson." << endl;
                 break;
             }
             case 'r':
