@@ -13,7 +13,7 @@ void create_acount()
 {
     cout << "Do you wang to create an acount to select lessons?[y/n] [default:y]" << endl;
     char flag;
-    cin >> flag;
+    cin.get(flag);
     if (flag != '\n')
         while (cin.get() != '\n')
             continue;
@@ -39,7 +39,7 @@ void create_acount()
 void start()
 {
     cout << "-------------------------------------------" << endl
-         << "      Welcome to the lesson system         " << endl
+         << "    Welcome to the course select system    " << endl
          << "                        Copyright by Walker" << endl
          << "-------------------------------------------" << endl;
 
@@ -48,10 +48,10 @@ void start()
     if (data.load())
         cout << "load the data successfully!" << endl;
 
-    cout << "Do you have an accont?[y/n] [default:y]";
+    cout << "Do you have an account?[y/n] [default:y]";
 
     char flag;
-    cin >> flag;
+    cin.get(flag);
     if (flag != '\n')
         while (cin.get() != '\n')
             continue;
@@ -66,12 +66,12 @@ void student_menu(const string &user_name)
 {
     cout << "---------------------------------------" << endl
          << "      Welcome to the student client    " << endl
-         << "      Your are  " << user_name << "        " << endl
-         << "       s : select a lesson             " << endl
-         << "       r : return a lesson             " << endl
+         << "      Your are  " << user_name << "    " << endl
+         << "       s : select a course             " << endl
+         << "       r : return a course             " << endl
          << "       w : watch your classes          " << endl
-         << "       p : print a lesson situation    " << endl
-         << "       a : print all lesson            " << endl
+         << "       p : print a course              " << endl
+         << "       a : print all course            " << endl
          << "       q : quit the client             " << endl
          << "---------------------------------------" << endl;
     cout << " Please enter your choice. " << endl;
@@ -84,21 +84,21 @@ void student_menu(const string &user_name)
             case 's':
             {
                 string lesson_name;
-                cout << "Please write down the name of the lesson you want." << endl;
+                cout << "Please write down the name of the course you want." << endl;
                 cin >> lesson_name;
                 if (data.lesson_add_stud(lesson_name, user_name))
-                    cout << "Select this lesson successfully" << endl;
+                    cout << "Select this course successfully" << endl;
                 else
-                    cout << "Failed to select the lesson." << endl;
+                    cout << "Failed to select the course." << endl;
                 break;
             }
             case 'r':
             {
                 string lesson_name;
-                cout << "Please write down the name of the lesson you want to return." << endl;
+                cout << "Please write down the name of the course you want to return." << endl;
                 cin >> lesson_name;
                 if (data.lesson_delete_stud(lesson_name, user_name))
-                    cout << "Return this lesson successfully" << endl;
+                    cout << "Return this course successfully" << endl;
                 break;
             }
             case 'w':
@@ -109,14 +109,14 @@ void student_menu(const string &user_name)
             case 'p':
             {
                 string lesson_name;
-                cout << "Please write down the name of the lesson you want to see." << endl;
+                cout << "Please write down the name of the course you want to see." << endl;
                 cin >> lesson_name;
                 if (data.find_lesson(lesson_name)){
                     data.print_lesson_public(lesson_name);
                     cout << "That's all" << endl;
                 }
                 else {
-                    cout << "Can't find this lesson." <<  endl;
+                    cout << "Can't find this course." <<  endl;
                     cout << "Please try again" << endl;
                 }
                 break;
@@ -135,7 +135,7 @@ void student_menu(const string &user_name)
             }
             default:
             {
-                cout << "Your comment is invalid. Pleash enter again" << endl;
+                cout << "Your command is invalid. Pleash enter it again" << endl;
             }
 
         }
@@ -149,9 +149,9 @@ void teacher_menu(const string & user_name)
     cout << "---------------------------------------" << endl
          << "      Welcome to the teacher client    " << endl
          << "      Your are  " << user_name << "        " << endl
-         << "       w : watch  a lesson             " << endl
-         << "       a : add    a lesson             " << endl
-         << "       p : print all lesson            " << endl
+         << "       w : watch  a course             " << endl
+         << "       a : add    a course             " << endl
+         << "       p : print all course            " << endl
          << "       q : quit the client             " << endl
          << "---------------------------------------" << endl;
     cout << " Please enter your choice. " << endl;
@@ -164,7 +164,7 @@ void teacher_menu(const string & user_name)
              case 'w':
              {
                  string lesson_name;
-                 cout << "Please write down the name of the lesson you want to watch." << endl;
+                 cout << "Please write down the name of the course you want to watch." << endl;
                  cin >> lesson_name;
                  if (data.find_lesson(lesson_name)){
                      data.print_lesson(lesson_name);
@@ -176,7 +176,7 @@ void teacher_menu(const string & user_name)
              {
                  string lesson_name;
                  int max_num = 0;
-                 cout << "Please write down the name of the lesson you want to add." << endl;
+                 cout << "Please write down the name of the course you want to add." << endl;
                  cin >> lesson_name;
                  cout << "And ths max number of students." << endl;
                  cin >> max_num;
@@ -197,7 +197,7 @@ void teacher_menu(const string & user_name)
              }
              default:
              {
-                 cout << "Your comment is invalid. Pleash enter again" << endl;
+                 cout << "Your command is invalid. Please enter again" << endl;
              }
         }
             cout << "Pleash continue to enter your choice" << endl;

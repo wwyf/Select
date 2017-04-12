@@ -8,7 +8,7 @@ using std::string;
 using std::vector;
 
  
- 
+  
 
 /*
 1. 用户登录，验证
@@ -27,8 +27,6 @@ public:
     bool verify(const string & try_password) const;
     virtual const string to_string(){ return "";};
     
-    // virtual void menu() = 0 ;
-    // void print_lesson() const;
 };
 
 
@@ -40,7 +38,6 @@ public:
     Student(const string& name,const string& password):
         User(name, password){};
     explicit Student(const string& data);
-    // void menu(){};
     const string to_string() const;
     const string to_string_public() const;
     bool select_lesson(const string & lesson_name);
@@ -57,11 +54,6 @@ public:
         User(name, password){};
     explicit Teacher(const string& data);
     const string to_string() const ;
-    // void menu() {};
-    // bool add_lesson();
-    // bool delete_lesson();
-
-    // void print_lesson_student();
 };
 
 
