@@ -29,12 +29,12 @@ github: https://github.com/WalkerYF/Select
 ```
 ---------------------------------------
       Welcome to the student client
-      Your are  name2
-       s : select a lesson
-       r : return a lesson
+      Your are  ×××××××××
+       s : select a course
+       r : return a course
        w : watch your classes
-       p : print a lesson situation
-       a : print all lesson
+       p : print a course
+       a : print all course
        q : quit the client
 ---------------------------------------
 ```
@@ -42,10 +42,10 @@ github: https://github.com/WalkerYF/Select
 ```
 ---------------------------------------
       Welcome to the teacher client
-      Your are  admin
-       w : watch  a lesson
-       a : add    a lesson
-       p : print all lesson
+      Your are  ××××××××
+       w : watch  a course
+       a : add    a course
+       p : print all course
        q : quit the client
 ---------------------------------------
 ```
@@ -57,14 +57,21 @@ github: https://github.com/WalkerYF/Select
 
 ## 3. 文件说明 
 
-###  ./src/data： 存放着各种数据
+###  ./bin/data： 存放着各种数据
 
-1. ./src/data/lesson 存放课程数据
-2. ./src/data/student 存放学生信息
-3. ./src/data/teacher 存放老师信息
+1. ./bin/data/lesson 存放课程数据
+2. ./bin/data/student 存放学生信息
+3. ./bin/data/teacher 存放老师信息
+
+> 注意：   
+> 程序中存放数据的文件的路径是以**相对路径**形式存放在程序中   
+> 请务必在bin目录下运行程序，才能成功加载数据
+
 ### 其他文件
-1. ./src/makefile 在./../bin/下生成可执行文件
-2. ./bin/test.in  测试数据 用于输入重定向
+1. ./src/makefile 在./../bin/下生成可执行文件(注意是相对目录)   
+这里同样需要在src目录下调用make命令方可正确创建可执行文件
+2. ./bin/test.in  测试数据 用于创建课程
+3. ./bin/test2.in 测试数据 用于学生选课
 
 
 ## 4. 已知bug
