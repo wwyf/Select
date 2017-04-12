@@ -206,7 +206,7 @@ void Database::print_student() const
 void Database::print_student_public(const string & user_name) const
 {
     cout << "-----------------------------------------------" << endl;
-    cout << "name    " << "courses" << endl;
+    cout << "name           " << "courses" << endl;
     cout << student_data.find(user_name)->second.to_string_public() << endl; 
     cout << "-----------------------------------------------" << endl;   
 }
