@@ -205,7 +205,10 @@ void Database::print_student() const
 
 void Database::print_student_public(const string & user_name) const
 {
-    cout << student_data.find(user_name)->second.to_string_public() << endl;    
+    cout << "-----------------------------------------------" << endl;
+    cout << "name    " << "courses" << endl;
+    cout << student_data.find(user_name)->second.to_string_public() << endl; 
+    cout << "-----------------------------------------------" << endl;   
 }
  
 void Database::print_teacher() const
@@ -214,31 +217,45 @@ void Database::print_teacher() const
         cout << i.second.to_string() << endl;
     }
 }
+
 void Database::print_lesson() const
 {
+    cout << "-----------------------------------------------" << endl;
+    cout << Lesson::lesson_head_string() << endl;
     for (auto i : lesson_data){
         cout << i.second.to_string() << endl;
     } 
+    cout << "-----------------------------------------------" << endl;
 }
  
 
 void Database::print_lesson(const string & lesson_name) const
 {
+    cout << "-----------------------------------------------" << endl;
+    cout << Lesson::lesson_head_string() << endl;
     cout << lesson_data.find(lesson_name)->second.to_string() << endl;
+    cout << "-----------------------------------------------" << endl;
 }
 
 void Database::print_lesson_public(const string & lesson_name) const
 {
+    cout << "-----------------------------------------------" << endl;
+    cout << Lesson::lesson_head_string() << endl;
     cout << lesson_data.find(lesson_name)->second.to_string_public() << endl;
+    cout << "-----------------------------------------------" << endl;
 }
 
 void Database::print_lesson_public() const
 {
+    cout << "-----------------------------------------------" << endl;
+    cout << Lesson::lesson_head_string() << endl;
     for (auto i : lesson_data)
     {
         cout << i.second.to_string_public() << endl;
     }
+    cout << "-----------------------------------------------" << endl;
 }  
+
 int Database::verify(const string & user_name, const string & try_password) const
 {
     int flag = find_username(user_name);

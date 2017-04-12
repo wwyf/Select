@@ -8,6 +8,19 @@
 #include <algorithm>
 using std::setw;
 
+const int LENGTH_NAME = 10;
+const int LENGTH_NUMBER = 5;
+
+string Lesson::lesson_head_string() 
+{
+    std::stringstream stream;
+    std::string head;
+    stream << setw(LENGTH_NAME) <<  "lesson name" 
+           << setw(LENGTH_NUMBER) << "max"
+           << setw(LENGTH_NUMBER) << "now";
+    getline(stream, head);
+    return head;
+}
 
 Lesson::Lesson(const string & data){
         stringstream res ;
@@ -28,11 +41,11 @@ const string  Lesson::to_string() const
 {
     std::stringstream stream; 
     std::string data;
-    stream << setw(10) << this->m_name
-           << setw(4)  << this->max_number
-           << setw(4)  << this->m_number;
+    stream << setw(LENGTH_NAME) << this->m_name
+           << setw(LENGTH_NUMBER)  << this->max_number
+           << setw(LENGTH_NUMBER)  << this->m_number;
     for (auto i : stud_selected){
-        stream << setw(10) << i;
+        stream << setw(LENGTH_NAME) << i;
     }
     getline(stream, data);
     return data;
@@ -43,9 +56,9 @@ const string Lesson::to_string_public() const
 {
     std::stringstream stream; 
     std::string data;
-    stream << setw(10) << this->m_name
-           << setw(4)  << this->max_number
-           << setw(4)  << this->m_number;
+    stream << setw(LENGTH_NAME) << this->m_name
+           << setw(LENGTH_NUMBER)  << this->max_number
+           << setw(LENGTH_NUMBER)  << this->m_number;
     getline(stream, data);
     return data;
 }

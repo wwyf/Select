@@ -24,6 +24,9 @@ using std::vector;
 */
 
 struct Lesson{
+
+    static string lesson_head_string();
+
     string m_name;
     int max_number;
     int m_number;
